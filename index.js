@@ -35,26 +35,29 @@ console.log('All tests passed.')
 
 const store = createStore(counter)
 
-const CatDisplay = ({
-    display,
-    onIncrement
-}) => (
-    <div>
-        <h1>{display.name}</h1>
-        <img src={display.image} onClick={onIncrement}/>
-        <h2>{display.counter}</h2>
-        <CatAdmin display={display}/>
-    </div>
+const CatDisplay = React.createClass({
+    render: function () {
+        return (
+            <div>
+                <h1>{this.props.display.name}</h1>
+                <img src={this.props.display.image} onClick={this.props.onIncrement}/>
+                <h2>{this.props.display.counter}</h2>
+                <CatAdmin display={display}/>
+            </div>
+        )
+    }
 )
 
-const CatAdmin = ({
-    display
-}) => (
-    <div>
-        <input type="text" value={display.name}/>
-        <input type="text" value={display.image}/>
-        <input type="text" value={display.counter}/>
-    </div>
+const CatAdmin = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <input type="text" value={this.props.display.name}/>
+                <input type="text" value={this.props.display.image}/>
+                <input type="text" value={this.props.display.counter}/>
+            </div>
+        )
+    }
 )
 
 console.log(store.getState())
@@ -62,12 +65,8 @@ console.log(store.getState())
 const render = () => {
     ReactDOM.render(
         <CatDisplay
-        display={store.getState()}
-        onIncrement={() =>
-            store.dispatch({
-                type: 'INCREMENT'
-            })}
-            />,
+            display={store.getState()}
+            onIncrement={() => store.dispatch({ type: 'INCREMENT' })} />,
         document.getElementById('root')
     );
 }
