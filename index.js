@@ -43,6 +43,17 @@ const CatDisplay = ({
         <h1>{display.name}</h1>
         <img src={display.image} onClick={onIncrement}/>
         <h2>{display.counter}</h2>
+        <CatAdmin display={display}/>
+    </div>
+)
+
+const CatAdmin = ({
+    display
+}) => (
+    <div>
+        <input type="text" value={display.name}/>
+        <input type="text" value={display.image}/>
+        <input type="text" value={display.counter}/>
     </div>
 )
 
