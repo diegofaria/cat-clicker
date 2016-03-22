@@ -17,33 +17,15 @@ export default function configureStore(initialState) {
   );
   return store;
 }
-const initialState = []
+const initialState = [
+    {id: 0, name: 'china cat', image: 'http://img.memecdn.com/im-a-cat-and-im-from-china_o_284394.jpg', counter: 0, active: true},
+    {id: 1, name: 'mexican cat', image: 'http://www.girlmeetsfood.com/wp-content/uploads/2012/04/mexican-cat.jpg', counter: 0, active: false},
+    {id: 2, name: 'irish cat', image: 'http://www.somuchviral.com/wp-content/uploads/2014/03/irish-cat.jpg', counter: 0, active: false},
+    {id: 3, name: 'russian cat', image: 'http://img.memecdn.com/Russian-Cat_o_138101.jpg', counter: 0, active: false}
+]
 const store = createStore(reducer, initialState,
     window.devToolsExtension ? window.devToolsExtension() : undefined
 );
-
-/*
-======================
-    INITIAL STATE
-======================
-*/
-store.dispatch({
-    type: "ADD_CAT",
-    cat: {id: 0, name: 'china cat', image: 'http://img.memecdn.com/im-a-cat-and-im-from-china_o_284394.jpg', counter: 0, active: true}
-})
-store.dispatch({
-    type: "ADD_CAT",
-    cat: {id: 1, name: 'mexican cat', image: 'http://www.girlmeetsfood.com/wp-content/uploads/2012/04/mexican-cat.jpg', counter: 0, active: false}
-})
-store.dispatch({
-    type: "ADD_CAT",
-    cat: {id: 2, name: 'irish cat', image: 'http://www.somuchviral.com/wp-content/uploads/2014/03/irish-cat.jpg', counter: 0, active: false}
-})
-store.dispatch({
-    type: "ADD_CAT",
-    cat: {id: 3, name: 'russian cat', image: 'http://img.memecdn.com/Russian-Cat_o_138101.jpg', counter: 0, active: false}
-})
-
 
 /*
 ======================
