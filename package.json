@@ -21,6 +21,7 @@
     "babel-preset-react": "^6.3.13",
     "deep-freeze": "0.0.1",
     "expect": "^1.15.2",
+    "remote-redux-devtools": "^0.1.5",
     "webpack": "^1.12.9"
   }
 }

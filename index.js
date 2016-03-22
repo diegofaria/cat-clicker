@@ -1,152 +1,26 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
-var deepFreeze = require('deep-freeze');
-import expect from 'expect'
 import { createStore } from 'redux'
+var reducer = require('./reducers')
+var tests = require('./test-reducer')
 
-/*
-======================
-    REDUCERS
-======================
-*/
-
-const cat = (state = [], action) => {
-    switch (action.type) {
-        case 'ADD_CAT':
-            return {
-                id: action.cat.id,
-                name: action.cat.name,
-                image: action.cat.image,
-                counter: action.cat.counter,
-                active: action.cat.active
-            }
-        case 'ACTIVATE_CAT':
-            if (state.id !== action.id)
-                return Object.assign({}, state, {active: false})
-            return Object.assign({}, state, {active: true})
-        case 'INCREMENT':
-            if (state.active)
-                return Object.assign({}, state, {counter: state.counter+1})
-            return state
-        default:
-            return state
-    }
-}
-
-const cats = (state = [], action) => {
-    switch (action.type) {
-        case 'ADD_CAT':
-            return [
-                ...state,
-                cat(undefined, action)
-            ]
-        case 'ACTIVATE_CAT':
-            return state.map(c => {
-                return cat(c, action)
-            })
-        case 'INCREMENT':
-            return state.map(c => {
-                return cat(c, action)
-            })
-        default:
-            return state
-    }
-}
-
-/*
-======================
-    REDUCERS TESTS
-======================
-*/
-const testAddCat = () => {
-    const stateBefore = []
-    const action = {
-        type: "ADD_CAT",
-        cat: {id: 0, name: '', image: '', counter: 1, active: false}
-    }
-    const stateAfter = [
-        {id: 0, name: '', image: '', counter: 1, active: false}
-    ]
-
-    deepFreeze(stateBefore)
-
-    expect(
-        cats(stateBefore, action)
-    ).toEqual(stateAfter)
-}
-testAddCat()
-
-const testIncrementCat = () => {
-    const stateBefore = [
-        {id: 0, name: '', image: '', counter: 1, active: false},
-        {id: 1, name: '', image: '', counter: 1, active: true}
-    ]
-    const action = {type: "INCREMENT"}
-    const stateAfter = [
-        {id: 0, name: '', image: '', counter: 1, active: false},
-        {id: 1, name: '', image: '', counter: 2, active: true}
-    ]
-
-    deepFreeze(stateBefore)
-
-    expect(
-        cats(stateBefore, action)
-    ).toEqual(stateAfter)
-}
-testIncrementCat()
-
-const testActivateCat = () => {
-    const stateBefore = [
-        {id: 0, name: '', image: '', counter: 1, active: false}
-    ]
-    const action = {
-        type: "ACTIVATE_CAT",
-        id: 0
-    }
-    const stateAfter = [
-        {id: 0, name: '', image: '', counter: 1, active: true}
-    ]
-
-    deepFreeze(stateBefore)
-
-    expect(
-        cats(stateBefore, action)
-    ).toEqual(stateAfter)
-}
-testActivateCat()
-
-const testActivateOneCatDeactiveOthers = () => {
-    const stateBefore = [
-        {id: 0, name: '', image: '', counter: 1, active: false},
-        {id: 1, name: '', image: '', counter: 1, active: true},
-        {id: 2, name: '', image: '', counter: 1, active: false}
-    ]
-    const action = {
-        type: "ACTIVATE_CAT",
-        id: 0
-    }
-    const stateAfter = [
-        {id: 0, name: '', image: '', counter: 1, active: true},
-        {id: 1, name: '', image: '', counter: 1, active: false},
-        {id: 2, name: '', image: '', counter: 1, active: false}
-    ]
-
-    deepFreeze(stateBefore)
-
-    expect(
-        cats(stateBefore, action)
-    ).toEqual(stateAfter)
-}
-testActivateOneCatDeactiveOthers()
-console.log('All tests passed.')
+tests()
 
 /*
 ======================
     STORE CREATION
 ======================
 */
-const store = createStore(cats)
-
+export default function configureStore(initialState) {
+  const store = createStore(reducer, initialState,
+    window.devToolsExtension ? window.devToolsExtension() : undefined
+  );
+  return store;
+}
+const initialState = []
+const store = createStore(reducer, initialState,
+    window.devToolsExtension ? window.devToolsExtension() : undefined
+);
 
 /*
 ======================
@@ -169,7 +43,6 @@ store.dispatch({
     type: "ADD_CAT",
     cat: {id: 3, name: 'russian cat', image: 'http://img.memecdn.com/Russian-Cat_o_138101.jpg', counter: 0, active: false}
 })
-
 
 
 /*
