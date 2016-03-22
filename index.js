@@ -194,11 +194,15 @@ const CatDisplay = React.createClass({
     render: function() {
         var cat = this.props.cat
         return (
-            <div>
-                <h1>{cat.name}</h1>
-                <img src={cat.image} onClick={() => {this.props.onIncrement(cat.id)}}/>
-                <h2>{cat.counter}</h2>
-                <CatAdmin cat={cat}/>
+            <div className="col-xs-8">
+                <div className='panel-heading'>
+                    <h3 className='panel-title'>{cat.name}</h3>
+                </div>
+                <div className="panel-body">
+                    <img src={cat.image} onClick={() => {this.props.onIncrement(cat.id)}}/>
+                    <h2>{cat.counter}</h2>
+                    <CatAdmin cat={cat}/>
+                </div>
             </div>
         )
     }
@@ -209,16 +213,18 @@ const CatList = React.createClass({
         var onSelectCat = this.props.onSelect
         const cats = this.props.data.map(function(cat){
             return (
-                <li key={cat.id}
+                <li className='list-group-item'
+                    key={cat.id}
                     onClick={() => {
                         onSelectCat(cat.id)
                     }}>
+                    <span className="badge">{cat.counter}</span>
                     {cat.name}
                 </li>
             )
         })
         return (
-            <ul>
+            <ul className='list-group col-xs-4'>
                 {cats}
             </ul>
         )
@@ -232,12 +238,14 @@ const CatBox = React.createClass({
         })[0]
 
         return (
-            <div>
+            <div className='row'>
+                <CatList
+                    data={this.props.data}
+                    onSelect={(id) => store.dispatch({ type: 'ACTIVATE_CAT', id: id })} />
                 <CatDisplay
+                    className='panel panel-default'
                     cat={selectedCat}
                     onIncrement={(id) => store.dispatch({ type: 'INCREMENT', id: id })} />
-                <CatList data={this.props.data}
-                    onSelect={(id) => store.dispatch({ type: 'ACTIVATE_CAT', id: id })} />
             </div>
         )
     }
