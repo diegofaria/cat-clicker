@@ -4,6 +4,12 @@ var deepFreeze = require('deep-freeze');
 import expect from 'expect'
 import { createStore } from 'redux'
 
+/*
+======================
+    REDUCERS
+======================
+*/
+
 const cat = (state = [], action) => {
     switch (action.type) {
         case 'ADD_CAT':
@@ -47,6 +53,11 @@ const cats = (state = [], action) => {
     }
 }
 
+/*
+======================
+    REDUCERS TESTS
+======================
+*/
 const testAddCat = () => {
     const stateBefore = []
     const action = {
@@ -129,8 +140,19 @@ const testActivateOneCatDeactiveOthers = () => {
 testActivateOneCatDeactiveOthers()
 console.log('All tests passed.')
 
+/*
+======================
+    STORE CREATION
+======================
+*/
 const store = createStore(cats)
 
+
+/*
+======================
+    INITIAL STATE
+======================
+*/
 store.dispatch({
     type: "ADD_CAT",
     cat: {id: 0, name: 'china cat', image: 'http://img.memecdn.com/im-a-cat-and-im-from-china_o_284394.jpg', counter: 0, active: true}
@@ -146,6 +168,40 @@ store.dispatch({
 store.dispatch({
     type: "ADD_CAT",
     cat: {id: 3, name: 'russian cat', image: 'http://img.memecdn.com/Russian-Cat_o_138101.jpg', counter: 0, active: false}
+})
+
+
+
+/*
+======================
+    REACT COMPONENTS
+======================
+*/
+const CatAdmin = React.createClass({
+    render: function() {
+        console.log(this.props.cat.name)
+        return (
+            <div>
+                <input defaultValue={this.props.cat.name} ref={ node => { this.input = node }}/>
+                <input defaultValue={this.props.cat.image} ref={ node => { this.input = node }}/>
+                <input defaultValue={this.props.cat.counter} ref={ node => { this.input = node }}/>
+            </div>
+        )
+    }
+})
+
+const CatDisplay = React.createClass({
+    render: function() {
+        var cat = this.props.cat
+        return (
+            <div>
+                <h1>{cat.name}</h1>
+                <img src={cat.image} onClick={() => {this.props.onIncrement(cat.id)}}/>
+                <h2>{cat.counter}</h2>
+                <CatAdmin cat={cat}/>
+            </div>
+        )
+    }
 })
 
 const CatList = React.createClass({
@@ -165,19 +221,6 @@ const CatList = React.createClass({
             <ul>
                 {cats}
             </ul>
-        )
-    }
-})
-
-const CatDisplay = React.createClass({
-    render: function() {
-        var cat = this.props.cat
-        return (
-            <div>
-                <h1>{cat.name}</h1>
-                <img src={cat.image} onClick={() => {this.props.onIncrement(cat.id)}}/>
-                <h2>{cat.counter}</h2>
-            </div>
         )
     }
 })
