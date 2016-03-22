@@ -50,19 +50,6 @@ store.dispatch({
     REACT COMPONENTS
 ======================
 */
-const CatAdmin = React.createClass({
-    render: function() {
-        console.log(this.props.cat.name)
-        return (
-            <div>
-                <input defaultValue={this.props.cat.name} ref={ node => { this.input = node }}/>
-                <input defaultValue={this.props.cat.image} ref={ node => { this.input = node }}/>
-                <input defaultValue={this.props.cat.counter} ref={ node => { this.input = node }}/>
-            </div>
-        )
-    }
-})
-
 const CatDisplay = React.createClass({
     render: function() {
         var cat = this.props.cat
