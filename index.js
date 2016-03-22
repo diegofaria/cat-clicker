@@ -196,12 +196,12 @@ const CatDisplay = React.createClass({
         return (
             <div className="col-xs-8">
                 <div className='panel-heading'>
-                    <h3 className='panel-title'>{cat.name}</h3>
+                    <h3 className='panel-title'>{cat.name} {cat.counter}</h3>
                 </div>
                 <div className="panel-body">
-                    <img src={cat.image} onClick={() => {this.props.onIncrement(cat.id)}}/>
-                    <h2>{cat.counter}</h2>
-                    <CatAdmin cat={cat}/>
+                    <img className="img-thumbnail" width="400px"
+                        src={cat.image}
+                        onClick={() => {this.props.onIncrement(cat.id)}}/>
                 </div>
             </div>
         )
@@ -212,8 +212,9 @@ const CatList = React.createClass({
     render: function() {
         var onSelectCat = this.props.onSelect
         const cats = this.props.data.map(function(cat){
+            const activeClass = cat.active == true ? 'active':''
             return (
-                <li className='list-group-item'
+                <li className='list-group-item {activeClass}'
                     key={cat.id}
                     onClick={() => {
                         onSelectCat(cat.id)
