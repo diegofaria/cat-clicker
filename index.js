@@ -11,12 +11,6 @@ tests()
     STORE CREATION
 ======================
 */
-export default function configureStore(initialState) {
-  const store = createStore(reducer, initialState,
-    window.devToolsExtension ? window.devToolsExtension() : undefined
-  );
-  return store;
-}
 const initialState = [
     {id: 0, name: 'china cat', image: 'http://img.memecdn.com/im-a-cat-and-im-from-china_o_284394.jpg', counter: 0, active: true},
     {id: 1, name: 'mexican cat', image: 'http://www.girlmeetsfood.com/wp-content/uploads/2012/04/mexican-cat.jpg', counter: 0, active: false},
