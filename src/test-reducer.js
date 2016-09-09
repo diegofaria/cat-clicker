@@ -1,6 +1,6 @@
-var deepFreeze = require('deep-freeze');
-var expect = require('expect')
-var reducer = require('./reducers')
+import deepFreeze from 'deep-freeze'
+import expect from 'expect'
+import reducer from './reducers'
 
 const testAddCat = () => {
     const stateBefore = []
@@ -85,4 +85,4 @@ function executeTests() {
     console.log('All tests passed.')
 }
 
-module.exports = executeTests
+export default executeTests

@@ -1,20 +1,7 @@
 {
   "name": "cat-clicker",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack --progress --colors --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "BSD-2-Clause",
-  "dependencies": {
-    "react": "^0.14.5",
-    "react-dom": "^0.14.5",
-    "redux": "^3.3.1",
-    "redux-thunk": "^2.0.1"
-  },
+  "version": "0.1.0",
+  "private": true,
   "devDependencies": {
     "babel-core": "^6.3.26",
     "babel-loader": "^6.2.0",
@@ -23,6 +10,23 @@
     "deep-freeze": "0.0.1",
     "expect": "^1.15.2",
     "remote-redux-devtools": "^0.1.5",
-    "webpack": "^1.12.9"
-  }
+    "webpack": "^1.12.9",
+    "react-scripts": "0.4.1"
+  },
+  "dependencies": {
+    "react": "15.3.1",
+    "react-dom": "15.3.1",
+    "redux": "^3.3.1",
+    "redux-thunk": "^2.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/react-scripts/config/eslint.js"
+  },
+  "author": "diegofaria"
 }

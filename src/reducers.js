@@ -41,4 +41,4 @@ const cats = (state = [], action) => {
     }
 }
 
-module.exports = cats
+export default cats
