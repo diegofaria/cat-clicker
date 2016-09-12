@@ -1,9 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import CatBox from './CatBox'
 import reducer from './reducers'
 import tests from './test-reducer'
+import App from './components/App'
 
 
 // tests()
@@ -24,9 +26,11 @@ const store = createStore(reducer, initialState,
 );
 
 const render = () => {
-    ReactDOM.render(
-        <CatBox data={store.getState()} dispatch={store.dispatch}/>,
-        document.getElementById('root')
+    render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.getElementById('root')
     );
 }
 
