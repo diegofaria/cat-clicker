@@ -5,7 +5,7 @@ import { createStore } from 'redux'
 import CatBox from './CatBox'
 import reducer from './reducers'
 import tests from './test-reducer'
-import App from './components/App'
+import App from './App'
 
 
 // tests()
@@ -21,11 +21,10 @@ const initialState = [
     {id: 2, name: 'irish cat', image: 'http://www.somuchviral.com/wp-content/uploads/2014/03/irish-cat.jpg', counter: 0, active: false},
     {id: 3, name: 'russian cat', image: 'http://img.memecdn.com/Russian-Cat_o_138101.jpg', counter: 0, active: false}
 ]
-const store = createStore(reducer, initialState,
-    window.devToolsExtension ? window.devToolsExtension() : undefined
-);
 
-const render = () => {
+const store = createStore(reducer, initialState);
+
+const renderApp = () => {
     render(
       <Provider store={store}>
         <App />
@@ -34,5 +33,6 @@ const render = () => {
     );
 }
 
-render()
-store.subscribe(render)
+renderApp()
+
+store.subscribe(renderApp)

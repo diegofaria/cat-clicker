@@ -1,27 +1,31 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
-class CatList extends Component {
-  render() {
-    var onSelectCat = this.props.onSelect
-    const cats = this.props.data.map(function(cat){
+const CatList = ({ cats, onSelectCat }) => {
+  const catItems = (cats) => {
+    return cats.map(function(cat) {
+
       const activeClass = cat.active == true ? 'active':''
+
       return (
         <li className='list-group-item {activeClass}'
-        key={cat.id}
-        onClick={() => {
-          onSelectCat(cat.id)
+          key={ cat.id }
+          onClick={() => {
+            onSelectCat(cat.id)
         }}>
-          <span className="badge">{cat.counter}</span>
-          {cat.name}
+          <span className="badge">{ cat.counter }</span>
+          { cat.name }
         </li>
       )
+
     })
-    return (
-      <ul className='list-group col-xs-4'>
-        {cats}
-      </ul>
-    )
   }
+
+  return (
+    <ul className='list-group col-xs-4'>
+      { catItems(cats) }
+    </ul>
+  )
 }
 
 export default CatList

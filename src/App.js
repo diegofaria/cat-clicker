@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from './CatBox'
+import CatBox from './CatBox'
 
 const App = () => (
   <div>
