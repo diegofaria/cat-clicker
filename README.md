@@ -2,17 +2,17 @@
 
 ### The application should display
 
-- [x] a list of cats by name
-- [x]  an area to display the selected cat
-- [ ]  an admin button
-- [ ]  an admin area with inputs for changing the cat's name, url, and number of clicks (hidden by default).
+- [x] A list of cats by name
+- [x] An area to display the selected cat
+- [ ] An admin button
+- [ ] An admin area with inputs for changing the cat's name, url, and number of clicks (hidden by default).
 
 ### In the cat display area, the following should be displayed
 
-- [x]  the cat's name
-- [x] a picture of the cat
-- [x]  text showing the number of clicks
-- [x]  The specifics of the layout do not matter, so style it however you'd like.
+- [x] The cat's name
+- [x] A picture of the cat
+- [x] Text showing the number of clicks
+- [x] The specifics of the layout do not matter, so style it however you'd like.
 
 ## Interaction
 
