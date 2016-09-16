@@ -1,14 +1,13 @@
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 
 const CatList = ({ cats, onSelectCat }) => {
   const catItems = (cats) => {
     return cats.map(function(cat) {
 
-      const activeClass = cat.active == true ? 'active':''
+      const isActive = cat.active === true ? 'active':''
 
       return (
-        <li className='list-group-item {activeClass}'
+        <li className={`list-group-item ${ isActive }`}
           key={ cat.id }
           onClick={() => {
             onSelectCat(cat.id)
