@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
+
+var name, image;
 
 const CatDisplay =({ cat, onIncrementCat }) => {
   return (
@@ -14,5 +16,10 @@ const CatDisplay =({ cat, onIncrementCat }) => {
     </div>
   )
 }
+
+CatDisplay.propTypes = {
+  cat: React.PropTypes.object.isRequired,
+  onIncrementCat: React.PropTypes.func,
+};
 
 export default CatDisplay
