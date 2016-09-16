@@ -2,13 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import CatBox from './CatBox'
 import reducer from './reducers'
 import tests from './test-reducer'
 import App from './App'
 
 
-// tests()
+tests()
 
 /*
 ======================

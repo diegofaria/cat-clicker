@@ -13,7 +13,7 @@ class CatBox extends Component {
         <CatDisplay
           className='panel panel-default'
           cat={ this.props.selectedCat }
-          onIncrement={ this.props.onIncrementCat } />
+          onIncrementCat={ this.props.onIncrementCat } />
       </div>
     )
   }
@@ -21,7 +21,7 @@ class CatBox extends Component {
 
 const getSelectedCat = (state) => {
   return state.filter(function(cat) {
-    return cat.active == true
+    return cat.active === true
   })[0]
 }
 
