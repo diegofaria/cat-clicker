@@ -20,6 +20,6 @@ const CatDisplay =({ cat, onIncrementCat }) => {
 CatDisplay.propTypes = {
   cat: React.PropTypes.object.isRequired,
   onIncrementCat: React.PropTypes.func,
-};
+}
 
 export default CatDisplay
