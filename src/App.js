@@ -2,9 +2,7 @@ import React from 'react'
 import CatBox from './CatBox'
 
 const App = () => (
-  <div>
-    <CatBox />
-  </div>
+  <CatBox />
 )
 
 export default App
