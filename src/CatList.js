@@ -11,7 +11,7 @@ const CatList = ({ cats, onSelectCat }) => {
           key={ cat.id }
           onClick={() => {
             onSelectCat(cat.id)
-        }}>
+          }}>
           <span className="badge">{ cat.counter }</span>
           { cat.name }
         </li>
@@ -25,6 +25,11 @@ const CatList = ({ cats, onSelectCat }) => {
       { catItems(cats) }
     </ul>
   )
+}
+
+CatList.propTypes = {
+  cats: React.PropTypes.array.isRequired,
+  onSelectCat: React.PropTypes.func
 }
 
 export default CatList
