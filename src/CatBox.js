@@ -1,22 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import CatList from './CatList'
 import CatDisplay from './CatDisplay'
 
-class CatBox extends Component {
-  render() {
-    return (
-      <div className='row'>
-        <CatList
-          cats={ this.props.cats }
-          onSelectCat={ this.props.onSelectCat } />
-        <CatDisplay
-          className='panel panel-default'
-          cat={ this.props.selectedCat }
-          onIncrementCat={ this.props.onIncrementCat } />
-      </div>
-    )
-  }
+const CatBox = ( props ) => {
+  return (
+    <div className='row'>
+      <CatList
+        cats={ props.cats }
+        onSelectCat={ props.onSelectCat } />
+      <CatDisplay
+        className='panel panel-default'
+        cat={ props.selectedCat }
+        onIncrementCat={ props.onIncrementCat } />
+    </div>
+  )
+}
+
+CatBox.propTypes = {
+  selectedCat: React.PropTypes.object,
+  cats: React.PropTypes.array.isRequired,
+  onSelectCat: React.PropTypes.func,
+  onIncrementCat: React.PropTypes.func
 }
 
 const getSelectedCat = (state) => {
