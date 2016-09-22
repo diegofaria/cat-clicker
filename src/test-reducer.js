@@ -3,86 +3,86 @@ import expect from 'expect'
 import reducer from './reducers'
 
 const testAddCat = () => {
-    const stateBefore = []
-    const action = {
-        type: "ADD_CAT",
-        cat: {id: 0, name: '', image: '', counter: 1, active: false}
-    }
-    const stateAfter = [
+  const stateBefore = []
+  const action = {
+    type: 'ADD_CAT',
+    cat: {id: 0, name: '', image: '', counter: 1, active: false}
+  }
+  const stateAfter = [
         {id: 0, name: '', image: '', counter: 1, active: false}
-    ]
+  ]
 
-    deepFreeze(stateBefore)
+  deepFreeze(stateBefore)
 
-    expect(
+  expect(
         reducer(stateBefore, action)
     ).toEqual(stateAfter)
 }
 const testIncrementCat = () => {
-    const stateBefore = [
+  const stateBefore = [
         {id: 0, name: '', image: '', counter: 1, active: false},
         {id: 1, name: '', image: '', counter: 1, active: true}
-    ]
-    const action = {type: "INCREMENT"}
-    const stateAfter = [
+  ]
+  const action = {type: 'INCREMENT'}
+  const stateAfter = [
         {id: 0, name: '', image: '', counter: 1, active: false},
         {id: 1, name: '', image: '', counter: 2, active: true}
-    ]
+  ]
 
-    deepFreeze(stateBefore)
+  deepFreeze(stateBefore)
 
-    expect(
+  expect(
         reducer(stateBefore, action)
     ).toEqual(stateAfter)
 }
 
 const testActivateCat = () => {
-    const stateBefore = [
+  const stateBefore = [
         {id: 0, name: '', image: '', counter: 1, active: false}
-    ]
-    const action = {
-        type: "ACTIVATE_CAT",
-        id: 0
-    }
-    const stateAfter = [
+  ]
+  const action = {
+    type: 'ACTIVATE_CAT',
+    id: 0
+  }
+  const stateAfter = [
         {id: 0, name: '', image: '', counter: 1, active: true}
-    ]
+  ]
 
-    deepFreeze(stateBefore)
+  deepFreeze(stateBefore)
 
-    expect(
+  expect(
         reducer(stateBefore, action)
     ).toEqual(stateAfter)
 }
 
 const testActivateOneCatDeactiveOthers = () => {
-    const stateBefore = [
+  const stateBefore = [
         {id: 0, name: '', image: '', counter: 1, active: false},
         {id: 1, name: '', image: '', counter: 1, active: true},
         {id: 2, name: '', image: '', counter: 1, active: false}
-    ]
-    const action = {
-        type: "ACTIVATE_CAT",
-        id: 0
-    }
-    const stateAfter = [
+  ]
+  const action = {
+    type: 'ACTIVATE_CAT',
+    id: 0
+  }
+  const stateAfter = [
         {id: 0, name: '', image: '', counter: 1, active: true},
         {id: 1, name: '', image: '', counter: 1, active: false},
         {id: 2, name: '', image: '', counter: 1, active: false}
-    ]
+  ]
 
-    deepFreeze(stateBefore)
+  deepFreeze(stateBefore)
 
-    expect(
+  expect(
         reducer(stateBefore, action)
     ).toEqual(stateAfter)
 }
 function executeTests() {
-    testAddCat()
-    testIncrementCat()
-    testActivateCat()
-    testActivateOneCatDeactiveOthers()
-    console.log('All tests passed.')
+  testAddCat()
+  testIncrementCat()
+  testActivateCat()
+  testActivateOneCatDeactiveOthers()
+  console.log('All tests passed.')
 }
 
 export default executeTests
