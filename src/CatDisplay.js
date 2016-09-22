@@ -1,6 +1,4 @@
-import React, { PropTypes } from 'react'
-
-var name, image;
+import React from 'react'
 
 const CatDisplay =({ cat, onIncrementCat }) => {
   return (
