@@ -1,11 +1,10 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import reducer from './reducers'
+import reducers from './reducers'
 import tests from './test-reducer'
 import App from './App'
-
 
 tests()
 
@@ -21,15 +20,15 @@ const initialState = [
     {id: 3, name: 'russian cat', image: 'http://img.memecdn.com/Russian-Cat_o_138101.jpg', counter: 0, active: false}
 ]
 
-const store = createStore(reducer, initialState);
+const store = createStore(reducers, initialState, window.devToolsExtension && window.devToolsExtension())
 
 const renderApp = () => {
-    render(
-      <Provider store={store}>
-        <App />
-      </Provider>,
-      document.getElementById('root')
-    );
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+  )
 }
 
 renderApp()

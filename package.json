@@ -11,9 +11,8 @@
     "deep-freeze": "0.0.1",
     "eslint": "^3.4.0",
     "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-react": "^6.2.0",    
+    "eslint-plugin-react": "^6.2.0",
     "expect": "^1.15.2",
-    "remote-redux-devtools": "^0.1.5",
     "webpack": "^1.12.9",
     "react-scripts": "0.4.1",
     "@kadira/storybook": "^2.5.2"
